@@ -8,12 +8,13 @@
 ## 목차
 0. [정확성](#정확성)
 1. [네이밍](#네이밍)
-    1. [변수](#변수)
-    2. [함수](#함수)
-    3. [열거형](#열거형)
-    4. [구조체와 클래스](#구조체와-클래스)
-    5. [프로토콜](#프로토콜)
-    6. [델리게이트](#델리게이트)
+    1. [변수와 상수](#변수와-상수)
+    2. [약어](#약어)
+    3. [함수](#함수)
+    4. [열거형](#열거형)
+    5. [구조체와 클래스](#구조체와-클래스)
+    6. [프로토콜](#프로토콜)
+    7. [델리게이트](#델리게이트)
 2. [주석](#주석)
 3. [띄어쓰기](#띄어쓰기)
 4. 코드 구성
@@ -36,7 +37,7 @@
 경고(warnings)없이 컴파일되도록 노력해야 합니다. 이 규칙은 문자열 원문(literals) 대신 #selector타입을 사용하는 것과 같이 많은 스타일을 결정하는 것을 제공합니다.
 
 ## 네이밍
-### 변수/상수
+### 변수와 상수
 - 일반변수 / 상수인 경우 따로 접두사를 붙이지 않습니다.
 - 변수 이름은 `lowerCamelCase`를 사용해주세요.
 - 배열과 같이 복수의 의미를 담고있는 변수라면 끝에 **s**를 붙여서 사용해주세요.
@@ -68,7 +69,27 @@
     static let maximumNumberOfLines = 3
     ```
   </details>
-  
+
+### 약어
+- 약어로 시작하는 경우 소문자로 표기하고, 그 외 경우에는 항상 대문자로 표기합니다.
+  <details>
+  <summary>예제코드</summary>
+
+  - **Good ✅**
+    ```swift
+    let userID: Int?
+    let html: String?
+    let websiteURL: URL?
+    let urlString: String?
+    ```
+  - **Bad ❌**
+    ```swift
+    let userId: Int?
+    let HTML: String?
+    let websiteUrl: NSURL?
+    let URLString: String?
+    ```
+  </details>
   
 ### 함수
 - 함수 이름에는 `lowerCamelCase`를 사용해주세요.
@@ -241,6 +262,33 @@
       }
       ```
     </details>
+    
+  - 프로토콜을 적용할 때는 extension을 만들어서 관련된 매소드를 모아둡니다.
+    <details>
+    <summary>예제코드</summary>
+        
+    - **Good ✅**
+      ```swift
+      final class MyViewController: UIViewController {
+      // ...
+      }
+      
+      // MARK: - UITableViewDataSource
+      extension MyViewController: UITableViewDataSource {
+      // ...
+      }
+
+      // MARK: - UITableViewDelegate
+      extension MyViewController: UITableViewDelegate {
+      // ...
+      }
+      ```
+    - **Bad ❌**
+     ```swift
+      final class MyViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+     // ...
+     }
+      ```
 
 ### 델리게이트
 - protocol을 이용해 delegate 패턴을 구현합니다.
