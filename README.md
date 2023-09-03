@@ -1,11 +1,12 @@
 # MakNaeZ-swift-style-guide
 귀여운 막내들의 Swift 코딩 스타일 가이드❤️
-귀여운 막내 개발자들이 따르고 있는 스위프트 스타일 가이드입니다.  
-다른 사람의 코드를 읽을 때 가독성을 높여주며, 내가 코드를 작성할 때 애매한 부분을 제거해줘 생산성 향상에 도움을 줍니다!
 
+귀여운 막내 개발자들이 따르고 있는 스위프트 스타일 가이드입니다. 👶🏻
+다른 사람의 코드를 읽을 때 가독성을 높여주며, 내가 코드를 작성할 때 애매한 부분을 제거해줘 생산성 향상에 도움을 줍니다
+협업시 일관성있는 코드를 작성할 수 있어서 코드의 일관성 유지에 좋습니다. 또 다른 사람이 작성한 코드를 읽을 때 코드의 문법보다 로직에 집중할 수 있는 장점이 있습니다.
 
 ## 목차
-
+0. [정확성](#정확성)
 1. [네이밍](#네이밍)
     1. [변수](#변수)
     2. [함수](#함수)
@@ -31,8 +32,12 @@
 12. [뷰 생성 방법](#뷰-생성-방법)
 
 
+## 정확성
+경고(warnings)없이 컴파일되도록 노력해야 합니다. 이 규칙은 문자열 원문(literals) 대신 #selector타입을 사용하는 것과 같이 많은 스타일을 결정하는 것을 제공합니다.
+
 ## 네이밍
-### 변수
+### 변수/상수
+- 일반변수 / 상수인 경우 따로 접두사를 붙이지 않습니다.
 - 변수 이름은 `lowerCamelCase`를 사용해주세요.
 - 배열과 같이 복수의 의미를 담고있는 변수라면 끝에 **s**를 붙여서 사용해주세요.
   <details>
@@ -50,6 +55,20 @@
     var show: Bool
     ```
   </details>
+- static 상수인 경우 앞에 k를 붙여줍니다
+  <details>
+  <summary>예제코드</summary>
+
+  - **Good ✅**
+    ```swift
+    static let kMaximumNumberOfLines = 3
+    ```
+  - **Bad ❌**
+    ```swift
+    static let maximumNumberOfLines = 3
+    ```
+  </details>
+  
   
 ### 함수
 - 함수 이름에는 `lowerCamelCase`를 사용해주세요.
@@ -692,3 +711,5 @@
 - [Linkedin Swift Style Guide](https://github.com/linkedin/swift-style-guide)
 - [Raywenderlich Swift Style Guide](https://github.com/raywenderlich/swift-style-guide)
 - [StyleShare Swift Style Guide](https://github.com/StyleShare/swift-style-guide#%EC%B5%9C%EB%8C%80-%EC%A4%84-%EA%B8%B8%EC%9D%B4)
+- [Swift Style Guide for Raywenderlich](https://kka7.tistory.com/59)
+- [팀에서 사용 중인 Swift Style Guide (코드 컨벤션)](https://jusung.github.io/Swift-Code-Convention/)
