@@ -28,6 +28,7 @@
     2. [타입 어노테이션](#타입-어노테이션)
 10. [메모리 관리](#메모리-관리)
 11. [파일관리](#파일관리)
+12. [뷰 생성 방법](#뷰-생성-방법)
 
 
 ## 네이밍
@@ -587,8 +588,103 @@
   </details>
 
 
-  
+## 뷰 생성 방법
+뷰를 생성하는 4가지 방법을 적절히 선택하여 코드를 구성하면 코드의 가독성과 재사용성을 높일 수 있습니다. 
+- 새로운 파일을 만들어서 뷰 생성
+  대규모 앱에서 코드를 구성할때 유지보수성을 향상시키기 위해 뷰를 여러 파일로 나눌 수 있습니다. 이 경우, 각 파일은 해당 뷰의 책임과 역할에 따라 구성됩니다.
+  <details>
+      <summary>예제코드</summary>
+      
+  ```swift
+  // MyCustomView.swift
+  import SwiftUI
+  struct MyCustomView: View {
+  var body: some View {
+  // Your custom view's content
+      }
+  }
+  ```
+  </details>
 
+- Private 함수로 만들어서 뷰 생성
+  뷰 내에서만 사용할 뷰를 생성하려면, 해당 뷰 내에 private 함수를 사용하여 내부적으로 사용되는 뷰를 생성할 수 있습니다.
+  <details>
+      <summary>예제코드</summary>
+      
+  ```swift
+  struct ParentView: View {
+    var body: some View {
+        VStack {
+            // ... Some content ...
+
+            // Private function creating a view
+            createSubview()
+            
+            // ... More content ...
+        }
+    }
+
+    private func createSubview() -> some View {
+        // Your subview's content
+    }
+  }
+  ```
+  </details>
+
+- Extension화 해서 뷰를 생성
+  뷰를 확장(extension)하여 새로운 메서드를 추가하는 방식으로도 뷰를 생성할 수 있습니다.
+  <details>
+      <summary>예제코드</summary>
+      
+  ```swift
+  extension View {
+    func customStyledView() -> some View {
+        // Return a custom-styled view
+        }
+    }
+  struct ContentView: View {
+    var body: some View {
+        Text("Hello, World!")
+            .customStyledView()
+    }
+  }
+  ```
+  </details>
+
+- 컴포넌트화해서 뷰를 생성
+  반복적으로 사용되는 UI 요소를 재사용하기 위해 컴포넌트로 뷰를 생성하는 것이 좋습니다. 이 컴포넌트는 필요한 곳에서 사용되며, 필요에 따라 데이터를 주입하여 동적으로 표시할 수 있습니다.
+  <details>
+    <summary>예제코드</summary>
+      
+  ```swift
+  struct CustomButton: View {
+    let title: String
+    var body: some View {
+        Button(action: {
+            // Button action
+        }) {
+            Text(title)
+                .padding()
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(10)
+        }
+    }
+  }
+  struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text("Welcome")
+            CustomButton(title: "Click Me")
+        }
+    }
+  }
+  ```
+  </details>
+    
+
+
+  
 ## Reference
 - [Apple Developer Academy Swift Style Guide](https://github.com/DeveloperAcademy-POSTECH/swift-style-guide)
 - [Google Swift Style Guide](https://google.github.io/swift/)
