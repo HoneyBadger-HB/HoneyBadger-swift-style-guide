@@ -293,10 +293,14 @@
      // ...
      }
       ```
+     </details>
 
 ### 델리게이트
 - protocol을 이용해 delegate 패턴을 구현합니다.
 - 함수의 첫번째 인자는 생략가능한 델리게이트의 소스 객체를 사용합니다.
+  <details>
+    <summary>예제코드</summary>
+        
    - **Good ✅**
         ```swift
             // 델리게이트의 소스 객체만을 메서드의 인자로 받는 경우
@@ -329,6 +333,31 @@
                 func UserScrollView(_ scrollView: UIScrollView)
             }  
         ```
+    </details>
+    
+- Delegate 메서드는 프로토콜명으로 네임스페이스를 구분합니다.
+  <details>
+    <summary>예제코드</summary>
+
+    - **Good ✅**
+      ```swift
+      protocol UserCellDelegate {
+          func userCellDidSetProfileImage(_ cell: UserCell)
+          func userCell(_ cell: UserCell, didTapFollowButtonWith user: User)
+      }
+      ```
+  - **Bad ❌**
+      ```swift
+      protocol UserCellDelegate {
+          func didSetProfileImage()
+          func followPressed(user: User)
+
+          // `UserCell`이라는 클래스가 존재할 경우 컴파일 에러 발생
+          func UserCell(_ cell: UserCell, didTapFollowButtonWith user: User)
+      }
+      ```
+     </details>
+  
 
 ## 주석
 > 주석은 협업에 있어 가독성을 높이고 다른 사람의 코드를 이해하는 중요한 도구입니다. 
@@ -754,6 +783,20 @@
   </details>
     
 
+
+
+<details>
+    <summary>예제코드</summary>
+
+    - **Good ✅**
+      ```swift
+      
+      ```
+  - **Bad ❌**
+      ```swift
+      
+      ```
+     </details>
 
   
 ## Reference
