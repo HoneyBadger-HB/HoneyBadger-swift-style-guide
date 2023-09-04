@@ -31,6 +31,10 @@
 10. [메모리 관리](#메모리-관리)
 11. [파일관리](#파일관리)
 12. [뷰 생성 방법](#뷰-생성-방법)
+13. [Extension](#Extension)
+    1. Color
+    2. Font
+15. [Component](#Component)
 
 
 ## 정확성
